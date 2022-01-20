@@ -2,16 +2,25 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
 
+const Page = new Array(
+	"Follow Edukasyon.ph on Facebook",
+	"Follow AWS Siklab Pilipinas on Facebook",
+	"Follow Zuitt Coding BootCamp on Facebook"
+	);
+
+const Task = (props) => {
+	return <li className="tasks-item">Follow {props.taskName} on Facebook</li>
+}
+
 const TaskList = () => {
 	return(
 			<ul>
-				<li className="tasks-item">Follow Edukasyon.ph on Facebook</li>
-				<li className="tasks-item">Follow AWS Siklab Pilipinas Facebook</li>
-				<li className="tasks-item">Follow Zuitt Coding BootCamp on Facebook</li>
+				<Task taskName={Page[0]} />
+				<Task taskName={Page[1]} />
+				<Task taskName={Page[2]} />
 			</ul>
 		);
 }
-
 
 const App = () =>{
 
