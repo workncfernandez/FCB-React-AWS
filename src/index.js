@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
 
-const Page = new Array(
+var taskItems = new Array(
 	"Follow Edukasyon.ph on Facebook",
 	"Follow AWS Siklab Pilipinas on Facebook",
 	"Follow Zuitt Coding BootCamp on Facebook"
@@ -13,12 +13,19 @@ const Task = (props) => {
 }
 
 const TaskList = () => {
+
 	return(
-			<ul>
-				<Task taskName={Page[0]} />
-				<Task taskName={Page[1]} />
-				<Task taskName={Page[2]} />
-			</ul>
+			<div>
+				<input className="task-input" />
+				<ul>
+					{
+						taskItems.map((item, index) => {
+							console.log(item);
+							return <Task key={index} taskName={item} />
+						})
+					}
+				</ul>
+			</div>
 		);
 }
 
