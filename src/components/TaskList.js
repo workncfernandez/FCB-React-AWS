@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 
@@ -11,9 +12,21 @@ var taskItems = new Array(
 
 const TaskList = () => {
 
+	const [taskValue, setTaskValue] = useState("Just Another Task");
+
+	// console.log(taskValue);
+
+	const inputChangeHandler = (e) => {
+		setTaskValue(e.target.value);
+	}
+
 	return(
 			<div>
-				<input className="task-input" />
+				<input
+				className="task-input"
+				placeholder="Create new task"
+				onChange={inputChangeHandler}
+				/>
 				<ul>
 					{
 						taskItems.map((item, index) => {
