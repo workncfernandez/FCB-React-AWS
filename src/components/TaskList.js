@@ -4,20 +4,26 @@ import ReactDOM from 'react-dom';
 
 import Task from './Task';
 
-var taskItems = new Array(
-	"Follow Edukasyon.ph on Facebook",
-	"Follow AWS Siklab Pilipinas on Facebook",
-	"Follow Zuitt Coding BootCamp on Facebook"
-	);
-
 const TaskList = () => {
 
-	const [taskValue, setTaskValue] = useState("Just Another Task");
+	var [taskItemsList, setTaskItemsList] = useState([
+		"Follow Edukasyon.ph on Facebook",
+		"Follow AWS Siklab Pilipinas on Facebook",
+		"Follow Zuitt Coding BootCamp on Facebook"
+	]);
 
-	// console.log(taskValue);
+
+	const [taskValue, setTaskValue] = useState("");
+
+	console.log(taskValue);
 
 	const inputChangeHandler = (e) => {
 		setTaskValue(e.target.value);
+	}
+
+	const addTaskHandler = (e) => {
+		setTaskItemsList([e.target.value, ...taskItemsList]);
+		setTaskValue("");
 	}
 
 	return(
@@ -26,10 +32,12 @@ const TaskList = () => {
 				className="task-input"
 				placeholder="Create new task"
 				onChange={inputChangeHandler}
+				onBlur={addTaskHandler}
+				value={taskValue}
 				/>
 				<ul>
 					{
-						taskItems.map((item, index) => {
+						taskItemsList.map((item, index) => {
 							return <Task key={index} taskName={item} />
 						})
 					}
